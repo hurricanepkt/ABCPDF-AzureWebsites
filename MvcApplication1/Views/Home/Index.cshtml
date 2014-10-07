@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ABCPDF Tester</title>
+    <style type="text/css">
+        table {
+            width: 100%;
+            height: 95%;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        tr.standard td {
+            width: 50%;
+        }
+
+        tr.standard {
+            height: 45%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 75%;
+        }
+
+        html, body {
+            height: 100%;
+        } 
+        tr.top { height : 25px;border: solid 1px red; }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="top">
+            
+            
+            <td colspan="2"><h1>@ViewBag.Description - <a href="@ViewBag.LinkDest">@ViewBag.Link</a>- <a href="https://github.com/hurricanepkt/ABCPDF-AzureWebsites">Source Code</a></h1></td>
+        </tr>
+        <tr class="standard">
+            <td>
+                <h4>Control (API built pdf only)</h4>
+                <div>@ViewBag.Control</div>
+                <iframe src="@ViewBag.Control"></iframe>
+            </td>
+            <td>
+                <h4>Fetch Test : IE</h4>
+                <div>@ViewBag.Test</div>
+                <iframe src="@ViewBag.Test"></iframe>
+            </td>
+        </tr>
+        <tr class="standard">
+            <td>
+                <h4>Razor Render</h4>
+                <div>@ViewBag.Razor</div>
+                <iframe src="@ViewBag.Razor"></iframe>
+            </td>
+            <td>
+                <h4>Fetch Test : Gecko</h4>
+                <div>@ViewBag.Gecko</div>
+                <iframe src="@ViewBag.Gecko"></iframe>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

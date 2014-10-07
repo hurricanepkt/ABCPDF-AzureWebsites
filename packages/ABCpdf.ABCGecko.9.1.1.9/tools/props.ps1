@@ -1,0 +1,1 @@
+$nativeDlls = @('ABCGecko.dll')
