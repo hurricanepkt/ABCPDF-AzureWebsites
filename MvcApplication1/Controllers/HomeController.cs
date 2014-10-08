@@ -62,11 +62,11 @@ namespace MvcApplication1.Controllers
 
         public void Test()
         {
-            GetValue(EngineType.MSHtml);
+            CreatePDFFetched(EngineType.MSHtml);
         }
         public void Gecko()
         {
-            GetValue(EngineType.Gecko);
+            CreatePDFFetched(EngineType.Gecko);
         }
 
         public ActionResult Printers()
@@ -176,7 +176,7 @@ namespace MvcApplication1.Controllers
 
             return pdfbytes;
         }
-        private void GetValue(EngineType engine)
+        private void CreatePDFFetched(EngineType engine)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["LicenseKey"].ConnectionString;
             XSettings.InstallLicense(connectionString);
@@ -185,6 +185,7 @@ namespace MvcApplication1.Controllers
             theDoc.HtmlOptions.UseScript = false;
             theDoc.HtmlOptions.BrowserWidth = 800;
             theDoc.HtmlOptions.ForGecko.UseScript = false;
+            theDoc.Rendering.DotsPerInch = 300;
             theDoc.HtmlOptions.ForGecko.InitialWidth = 800;
             theDoc.Rect.Inset(18, 18);
             theDoc.Page = theDoc.AddPage();
