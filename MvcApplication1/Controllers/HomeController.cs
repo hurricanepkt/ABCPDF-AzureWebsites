@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -28,6 +29,10 @@ namespace MvcApplication1.Controllers
             return View();
 
         }
+
+     
+
+        
 
         public ActionResult Reference()
         {
@@ -64,6 +69,11 @@ namespace MvcApplication1.Controllers
             GetValue(EngineType.Gecko);
         }
 
+        public ActionResult Printers()
+        {
+            ViewBag.Printer = Printerinfo();
+            return View();
+        }
         public ActionResult RazorPDF()
         {
             return View();
@@ -85,6 +95,23 @@ namespace MvcApplication1.Controllers
             Response.ContentType = "application/pdf";
             Response.BinaryWrite(pdfbytes);
 
+        }
+
+        private string Printerinfo()
+        {
+            var retval = "Printers -<br /><table>";
+            foreach (string printerName in PrinterSettings.InstalledPrinters)
+            {
+                var printer = new PrinterSettings { PrinterName = printerName };
+                retval += String.Format("<tr><td>{0}</td><td>{1}</td><td>", printerName, printer.IsDefaultPrinter);
+                foreach (var printerResolution in printer.PrinterResolutions)
+                {
+                    retval += String.Format("{0}<br />", printerResolution.ToString());
+                }
+                retval += "</td></tr>";
+            }
+            retval += "</table>Thats all printers <br />";
+            return retval;
         }
         public static string RenderViewToString(Controller controller, string viewName, object model, string masterName)
         {
