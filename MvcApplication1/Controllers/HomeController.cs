@@ -19,6 +19,9 @@ namespace MvcApplication1.Controllers
     {
         public ActionResult Index()
         {
+            var screen = System.Windows.Forms.Screen.PrimaryScreen;
+            ViewBag.Height = screen.Bounds.Height;
+            ViewBag.Width = screen.Bounds.Width;
             ViewBag.Control = "/Home/Control";
             ViewBag.Test = "/Home/Test";
             ViewBag.Razor = "/Home/Razor";
@@ -147,6 +150,8 @@ namespace MvcApplication1.Controllers
             // Create ABCpdf Doc object
             var doc = new Doc();
             doc.HtmlOptions.Engine = EngineType.Gecko;
+            doc.HtmlOptions.ForGecko.ProcessOptions.LoadUserProfile = true;
+            doc.HtmlOptions.HostWebBrowser = true;
             doc.HtmlOptions.BrowserWidth = 800;
             doc.HtmlOptions.ForGecko.InitialWidth = 800;
             // Add html to Doc

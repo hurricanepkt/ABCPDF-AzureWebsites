@@ -36,39 +36,42 @@
     </style>
 </head>
 <body>
-    <table>
-        <tr class="top">
-            
-            
-            <td colspan="2">
-                <h1>@ViewBag.Description - <a href="@ViewBag.LinkDest">@ViewBag.Link</a>- <a href="https://github.com/hurricanepkt/ABCPDF-AzureWebsites">Source Code</a></h1>
-            </td>
-        </tr>
-        <tr class="standard">
-            <td>
-                <h4>Control (API built pdf only)</h4>
-                <div>@ViewBag.Control</div>
-                <iframe src="@ViewBag.Control"></iframe>
-            </td>
-            <td>
-                <h4>Fetch Test : IE</h4>
-                <div>@ViewBag.Test</div>
-                <iframe src="@ViewBag.Test"></iframe>
-            </td>
-        </tr>
-        <tr class="standard">
-            <td>
-                <h4>Razor Render</h4>
-                <div>@ViewBag.Razor</div>
-                <iframe src="@ViewBag.Razor"></iframe>
-            </td>
-            <td>
-                <h4>Fetch Test : Gecko</h4>
-                <div>@ViewBag.Gecko</div>
-                <iframe src="@ViewBag.Gecko"></iframe>
-            </td>
-        </tr>
-    </table>
+<h2>Screen @ViewBag.Width X @ViewBag.Height</h2>
+<table>
+    <tr class="top">
+
+
+        <td colspan="2">
+            <h1>
+                @ViewBag.Description - <a href="@ViewBag.LinkDest">@ViewBag.Link</a>- <a href="https://github.com/hurricanepkt/ABCPDF-AzureWebsites">Source Code</a>
+            </h1>
+        </td>
+    </tr>
+    <tr class="standard">
+        <td>
+            <h4>Control (API built pdf only)</h4>
+            <div>@ViewBag.Control</div>
+            <iframe src="@ViewBag.Control"></iframe>
+        </td>
+        <td>
+            <h4>Fetch Test : IE</h4>
+            <div>@ViewBag.Test</div>
+            <iframe src="@ViewBag.Test"></iframe>
+        </td>
+    </tr>
+    <tr class="standard">
+        <td>
+            <h4>Razor Render</h4>
+            <div>@ViewBag.Razor</div>
+            <iframe src="@ViewBag.Razor"></iframe>
+        </td>
+        <td>
+            <h4>Fetch Test : Gecko</h4>
+            <div>@ViewBag.Gecko</div>
+            <iframe src="@ViewBag.Gecko"></iframe>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>
