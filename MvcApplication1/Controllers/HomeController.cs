@@ -50,7 +50,7 @@ namespace MvcApplication1.Controllers
         public void Control()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["LicenseKey"].ConnectionString;
-            //XSettings.InstallLicense(connectionString);
+            XSettings.InstallLicense(connectionString);
             var theDoc = new Doc { FontSize = 96 };
 
             theDoc.AddText("Control");
@@ -179,7 +179,7 @@ namespace MvcApplication1.Controllers
         private void CreatePDFFetched(EngineType engine)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["LicenseKey"].ConnectionString;
-            //XSettings.InstallLicense(connectionString);
+            XSettings.InstallLicense(connectionString);
             var theDoc = new Doc();
             theDoc.HtmlOptions.Engine = engine;
             theDoc.HtmlOptions.UseScript = false;
