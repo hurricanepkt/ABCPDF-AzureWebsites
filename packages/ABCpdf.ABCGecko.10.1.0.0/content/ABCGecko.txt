@@ -1,0 +1,22 @@
+Important:
+
+
+The ABCGecko engine consists of two parts:
+
+1) The "ABCGeckoWP.exe" worker process
+
+2) The "XULRunner37_0" folder
+
+
+
+Visual Studio will automatically copy the worker process executable to your output directory.
+
+However the XULRunner folder contains too many items for Visual Studio to do this efficiently.
+
+As such you should manually copy the XULRunner folder to your output directory.
+
+
+
+Alternatively you can use an ABCpdf10 config section in your config file to instruct ABCpdf where to find the XULRunner folder.
+
+There are details in the ABCpdf documentation under SetConfigSection and XULRunnerDirectory.
