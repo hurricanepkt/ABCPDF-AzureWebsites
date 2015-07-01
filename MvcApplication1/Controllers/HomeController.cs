@@ -189,7 +189,7 @@ namespace MvcApplication1.Controllers
             theDoc.HtmlOptions.ForGecko.InitialWidth = 800;
             theDoc.Rect.Inset(18, 18);
             theDoc.Page = theDoc.AddPage();
-            int theID = theDoc.AddImageUrl("http://html5boilerplate.com/", true, 800, true);
+            int theID = theDoc.AddImageUrl("http://woot.com/", true, 800, true);
             while (true)
             {
                 theDoc.FrameRect(); // add a black border
