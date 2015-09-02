@@ -1,3 +1,5 @@
 Web.config.debug
 Web.Debug.config
 Backups/
+Backup/
+.vs/
