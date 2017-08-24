@@ -81,7 +81,7 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
-        public void Razor()
+        public ActionResult Razor()
         {
             // Return view if there is an error
 
@@ -94,9 +94,10 @@ namespace MvcApplication1.Controllers
             var pdfbytes = PDFForHtml(report);
 
             // Return file result
-            //return File(pdfbytes, System.Net.Mime.MediaTypeNames.Application.Pdf);
-            Response.ContentType = "application/pdf";
-            Response.BinaryWrite(pdfbytes);
+            Response.AddHeader("Content-Disposition", "inline; filename=\"Razor.pdf\"");
+            return File(pdfbytes, "application/pdf");
+            //Response.ContentType = "application/pdf";
+            //Response.BinaryWrite(pdfbytes);
 
         }
 
