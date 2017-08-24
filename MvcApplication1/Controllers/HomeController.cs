@@ -78,7 +78,7 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
-        public void Razor()
+        public ActionResult Razor()
         {
             // Return view if there is an error
 
