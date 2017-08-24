@@ -92,8 +92,8 @@ namespace MvcApplication1.Controllers
 
             // Return file result
             //return File(pdfbytes, System.Net.Mime.MediaTypeNames.Application.Pdf);
-            Response.ContentType = "application/pdf";
-            Response.BinaryWrite(pdfbytes);
+            Response.AddHeader("Content-Disposition", "inline; filename=\"Razor.pdf\"");
+            return File(pdfbytes, "application/pdf");
 
         }
 
