@@ -158,6 +158,7 @@ namespace MvcApplication1.Controllers
             doc.HtmlOptions.HostWebBrowser = true;
             doc.HtmlOptions.BrowserWidth = 800;
             doc.HtmlOptions.ForGecko.InitialWidth = 800;
+            doc.HtmlOptions.ForChrome.
             // Add html to Doc
             int theID = doc.AddImageHtml(html);
 
