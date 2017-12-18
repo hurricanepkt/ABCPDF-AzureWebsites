@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
-using WebSupergoo.ABCpdf9;
+using WebSupergoo.ABCpdf11;
 
 namespace MvcApplication1.Controllers
 {
@@ -26,6 +21,7 @@ namespace MvcApplication1.Controllers
             ViewBag.Test = "/Home/Test";
             ViewBag.Razor = "/Home/Razor";
             ViewBag.Gecko = "/Home/Gecko";
+            ViewBag.Chrome = "/Home/Chrome";
             ViewBag.Description = "Live Test";
             ViewBag.LinkDest = "/Home/Reference";
             ViewBag.Link = "See what it should look like";
@@ -43,6 +39,7 @@ namespace MvcApplication1.Controllers
             ViewBag.Test = "/Content/Reference/IE.pdf";
             ViewBag.Razor = "/Content/Reference/RazorRender.pdf";
             ViewBag.Gecko = "/Content/Reference/GeckoFetch.pdf";
+            ViewBag.Chrome = "/Content/Reference/Chrome.pdf";
             ViewBag.Description = "Reference PDFs";
             ViewBag.LinkDest = "/Home/Index";
             ViewBag.Link = "See what it does look like";
@@ -69,7 +66,13 @@ namespace MvcApplication1.Controllers
         }
         public void Gecko()
         {
+            
             CreatePDFFetched(EngineType.Gecko);
+        }
+
+        public void Chrome()
+        {
+            CreatePDFFetched(EngineType.Chrome);
         }
 
         public ActionResult Printers()
