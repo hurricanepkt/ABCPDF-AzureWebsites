@@ -15,6 +15,8 @@ namespace MvcApplication1.Controllers
     {
         public ActionResult Index()
         {
+            Trace.Write("HELLO");
+            Trace.TraceWarning("WARNING");
             var screen = System.Windows.Forms.Screen.PrimaryScreen;
             ViewBag.Height = screen.Bounds.Height;
             ViewBag.Width = screen.Bounds.Width;
