@@ -158,7 +158,9 @@ namespace MvcApplication1.Controllers
             doc.HtmlOptions.HostWebBrowser = true;
             doc.HtmlOptions.BrowserWidth = 800;
             doc.HtmlOptions.ForGecko.InitialWidth = 800;
-            doc.HtmlOptions.ForChrome.
+            
+            doc.HtmlOptions.ForChrome.BrowserWidth = 800;
+            doc.HtmlOptions.ForChrome.ProcessOptions.LoadUserProfile = false;
             // Add html to Doc
             int theID = doc.AddImageHtml(html);
 
@@ -197,6 +199,12 @@ namespace MvcApplication1.Controllers
             theDoc.HtmlOptions.ForGecko.UseScript = false;
             theDoc.Rendering.DotsPerInch = 300;
             theDoc.HtmlOptions.ForGecko.InitialWidth = 800;
+
+            if (engine == EngineType.Chrome)
+            {
+                Console.WriteLine("dont load user profile");
+                theDoc.HtmlOptions.ForChrome.ProcessOptions.LoadUserProfile = false;
+            }
             theDoc.Rect.Inset(18, 18);
             theDoc.Page = theDoc.AddPage();
             int theID = theDoc.AddImageUrl("http://woot.com/", true, 800, true);
