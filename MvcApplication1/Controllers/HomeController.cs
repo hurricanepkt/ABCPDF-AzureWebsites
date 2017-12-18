@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Drawing.Printing;
 using System.IO;
 using System.Text;
@@ -202,7 +203,7 @@ namespace MvcApplication1.Controllers
 
             if (engine == EngineType.Chrome)
             {
-                Console.WriteLine("dont load user profile");
+                Trace.WriteLine("Chrome !!");
                 theDoc.HtmlOptions.ForChrome.ProcessOptions.LoadUserProfile = false;
             }
             theDoc.Rect.Inset(18, 18);
