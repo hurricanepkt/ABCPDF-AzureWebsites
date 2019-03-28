@@ -21,6 +21,10 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,9 +46,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ABCpdf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ABCpdf.10.0.0.0\lib\net40\ABCpdf.dll</HintPath>
+    <Reference Include="ABCpdf, Version=11.2.0.5, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169, processorArchitecture=MSIL">
+      <HintPath>..\packages\ABCpdf.11.2.05\lib\net40\ABCpdf.dll</HintPath>
     </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -178,26 +181,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\ABCpdf.10.0.0.0\bin\ABCpdf10-32.dll">
-      <Link>ABCpdf10-32.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\ABCpdf.10.0.0.0\bin\ABCpdf10-64.dll">
-      <Link>ABCpdf10-64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\ABCpdf.10.0.0.0\bin\PrintHook32.dll">
-      <Link>PrintHook32.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\ABCpdf.10.0.0.0\bin\PrintHook64.dll">
-      <Link>PrintHook64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\packages\ABCpdf.ABCGecko.10.0.0.0\bin\ABCGecko.dll">
       <Link>ABCGecko.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ABCGeckoQuickStart.txt" />
+    <Content Include="ABCpdfQuickStart.txt" />
     <Content Include="bin\AccessibleMarshal.dll" />
     <Content Include="bin\crashinject.exe" />
     <Content Include="bin\crashinjectdll.dll" />
@@ -3387,6 +3376,7 @@
     <Content Include="XULRunner21_0\xul.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ABCpdf.chm" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="input.htm" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -5500,4 +5490,13 @@
     </ItemGroup>
     <Microsoft.Build.Tasks.Copy SourceFiles="@(MyFiles)" DestinationFiles="@(MyFiles->'$(OutputPath)\XULRunner21_0\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
+  <Import Project="..\packages\ABCpdf.11.2.05\build\ABCpdf.targets" Condition="Exists('..\packages\ABCpdf.11.2.05\build\ABCpdf.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ABCpdf.11.2.05\build\ABCpdf.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ABCpdf.11.2.05\build\ABCpdf.targets'))" />
+    <Error Condition="!Exists('..\packages\ABCpdf.ABCGecko.11.2.05\build\ABCpdf.ABCGecko.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ABCpdf.ABCGecko.11.2.05\build\ABCpdf.ABCGecko.targets'))" />
+  </Target>
+  <Import Project="..\packages\ABCpdf.ABCGecko.11.2.05\build\ABCpdf.ABCGecko.targets" Condition="Exists('..\packages\ABCpdf.ABCGecko.11.2.05\build\ABCpdf.ABCGecko.targets')" />
 </Project>
